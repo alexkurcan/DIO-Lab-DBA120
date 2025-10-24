@@ -53,3 +53,34 @@ FROM stand_user
 ORDER BY MONTHS_SINCE_DEBUT DESC;
 
 -- Question 10.
+SELECT user_name AS "USER_NAME",
+    stand_name AS "STAND_NAME",
+    '"' || user_name || '" wields "' || stand_name || '" with power ' ||
+    TO_CHAR(POWER, '999,999') || ', but dreams of ' || TO_CHAR(POWER * 3, '999,999') || '.' AS "DREAM_STATEMENT"
+FROM stand_user;
+
+-- Question 11.
+SELECT stand_name
+FROM stand_user
+WHERE REGEXP_LIKE(stand_name,'World','i');
+-- just to make sure that the output was correct
+SELECT * FROM stand_user;
+
+-- Question 12.
+SELECT user_name AS "USER_NAME",
+    stand_name AS "STAND_NAME",
+    SOUNDEX(stand_name) AS "SOUND_CODE"
+FROM stand_user
+-- don't really need this but I just wanted to see the order of the soundes vals
+ORDER BY SOUNDEX(stand_name) DESC;
+
+--BONUS CHALLENGE
+SELECT
+    CASE
+     WHEN (SELECT power FROM stand_user WHERE user_name = 'DIO') > (SELECT power FROm stand_user WHERE user_name = 'Jotaro Kujo')
+     THEN 'DIO reigns supreme'
+        WHEN (SELECT power FROm stand_user WHERE user_name = 'JOtato Kujo') > (SELECT power FROM stand_user WHERE user_name = 'DIO')
+        THEN 'Jotaro prevails'
+        ELSE 'It''s a tie!'
+    END AS "The TRUE battle results!"
+FROM dual;

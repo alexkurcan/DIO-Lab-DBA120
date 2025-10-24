@@ -49,6 +49,7 @@ FROM stand_user;
 -- Question 9.
 SELECT user_name AS "USER_NAME",
     ROUND(MONTHS_BETWEEN(SYSDATE, debut_date)) "MONTHS_SINCE_DEBUT"
-FROM stand_user;
+FROM stand_user
+ORDER BY MONTHS_SINCE_DEBUT DESC;
 
 -- Question 10.

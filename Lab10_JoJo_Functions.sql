@@ -77,9 +77,9 @@ ORDER BY SOUNDEX(stand_name) DESC;
 --BONUS CHALLENGE
 SELECT
     CASE
-     WHEN (SELECT power FROM stand_user WHERE user_name = 'DIO') > (SELECT power FROm stand_user WHERE user_name = 'Jotaro Kujo')
+     WHEN (SELECT power FROM stand_user WHERE user_name = 'DIO') > (SELECT power FROM stand_user WHERE user_name = 'Jotaro Kujo')
      THEN 'DIO reigns supreme'
-        WHEN (SELECT power FROm stand_user WHERE user_name = 'JOtato Kujo') > (SELECT power FROM stand_user WHERE user_name = 'DIO')
+        WHEN (SELECT power FROm stand_user WHERE user_name = 'Jotaro Kujo') > (SELECT power FROM stand_user WHERE user_name = 'DIO')
         THEN 'Jotaro prevails'
         ELSE 'It''s a tie!'
     END AS "The TRUE battle results!"
